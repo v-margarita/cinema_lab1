@@ -13,12 +13,10 @@ public class Ticket {
         this.isVipSeat = isVipSeat;
     }
 
-    // Getters
     public Schedule getSchedule() { return schedule; }
     public int getSeatNumber() { return seatNumber; }
     public boolean isVipSeat() { return isVipSeat; }
 
-    // Business logic method
     public double calculateFinalPrice() {
         double basePrice = schedule.getPrice();
         if (isVipSeat) {
