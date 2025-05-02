@@ -14,14 +14,11 @@ public class Movie {
         this.duration = duration;
         this.rating = rating;
     }
-
-    // Getters
     public String getTitle() { return title; }
     public String getGenre() { return genre; }
     public int getDuration() { return duration; }
     public double getRating() { return rating; }
 
-    // Business logic method
     public boolean isBlockbuster() {
         return rating >= 8.0;
     }
