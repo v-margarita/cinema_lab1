@@ -15,13 +15,11 @@ public class Schedule {
         this.price = price;
     }
 
-    // Getters
     public Movie getMovie() { return movie; }
     public Hall getHall() { return hall; }
     public String getTime() { return time; }
     public double getPrice() { return price; }
 
-    // Business logic method
     public boolean isEveningSession() {
         return this.time.compareTo("18:00") >= 0;
     }
