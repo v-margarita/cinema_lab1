@@ -22,7 +22,6 @@ public class BookingService {
     private List<Hall> halls = new ArrayList<>();
     private List<Schedule> schedules = new ArrayList<>();
 
-    // Movie operations
     public void addMovie(Movie movie) {
         if (movie == null) throw new IllegalArgumentException("Movie cannot be null");
         movies.add(movie);
@@ -38,7 +37,6 @@ public class BookingService {
         return result;
     }
 
-    // Hall operations
     public void addHall(Hall hall) {
         if (hall == null) throw new IllegalArgumentException("Hall cannot be null");
         halls.add(hall);
@@ -53,7 +51,6 @@ public class BookingService {
         return null;
     }
 
-    // Schedule operations
     public void addSchedule(Schedule schedule) {
         if (schedule == null) throw new IllegalArgumentException("Schedule cannot be null");
         schedules.add(schedule);
@@ -69,10 +66,6 @@ public class BookingService {
         return result;
     }
 
-    // User operations
-   
-
-    // Ticket operations
     public Ticket bookTicket(Schedule schedule, int seatNumber, boolean isVipSeat) {
         // Перевірка вхідних параметрів
         if (schedule == null) {
@@ -83,7 +76,6 @@ public class BookingService {
             throw new IllegalArgumentException("Invalid seat number");
         }
 
-        // Перевірка чи місце вже зайняте
         boolean seatTaken = false;
         for (Ticket ticket : tickets) {
             if (ticket.getSchedule().equals(schedule) && ticket.getSeatNumber() == seatNumber) {
@@ -96,7 +88,6 @@ public class BookingService {
             throw new IllegalStateException("Seat " + seatNumber + " is already booked");
         }
 
-        // Створення та додавання нового квитка
         Ticket newTicket = new Ticket(schedule, seatNumber, isVipSeat);
         tickets.add(newTicket);
        
@@ -104,18 +95,15 @@ public class BookingService {
     }
 
     
-
     public List<Ticket> getTicketsForSchedule(Schedule schedule) {
         List<Ticket> result = new ArrayList<>();
         
-        // Фільтрація квитків за розкладом
         for (Ticket ticket : tickets) {
             if (ticket.getSchedule().equals(schedule)) {
                 result.add(ticket);
             }
         }
         
-        // Сортування за номером місця
         Collections.sort(result, new Comparator<Ticket>() {
             @Override
             public int compare(Ticket t1, Ticket t2) {
@@ -129,7 +117,6 @@ public class BookingService {
     public List<Integer> getAvailableSeats(Schedule schedule) {
         List<Integer> takenSeats = new ArrayList<>();
         
-        // Отримання зайнятих місць
         for (Ticket ticket : tickets) {
             if (ticket.getSchedule().equals(schedule)) {
                 takenSeats.add(ticket.getSeatNumber());
@@ -139,7 +126,6 @@ public class BookingService {
         List<Integer> availableSeats = new ArrayList<>();
         int capacity = schedule.getHall().getCapacity();
         
-        // Перевірка вільних місць
         for (int i = 1; i <= capacity; i++) {
             if (!takenSeats.contains(i)) {
                 availableSeats.add(i);
