@@ -67,7 +67,6 @@ public class BookingService {
     }
 
     public Ticket bookTicket(Schedule schedule, int seatNumber, boolean isVipSeat) {
-        // Перевірка вхідних параметрів
         if (schedule == null) {
             throw new IllegalArgumentException("Schedule cannot be null");
         }
@@ -159,7 +158,6 @@ public class BookingService {
 
         public void importTicketsFromFile(String filename) {
             try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
-                // Skip header
                 reader.readLine();
                 
                 String line;
