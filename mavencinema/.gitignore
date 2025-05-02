@@ -1,1 +1,43 @@
+# === IDE (IntelliJ IDEA / Eclipse / NetBeans) ===
+*.iml
+.idea/
+*.ipr
+*.iws
+*.swp
+.vscode/
+.project
+.classpath
+.settings/
+
+# === OS Specific ===
+.DS_Store
+Thumbs.db
+
+# === Build directories ===
 /target/
+build/
+
+# === Logs / temp files ===
+*.log
+*.tmp
+
+# === Compiled Java classes ===
+*.class
+
+# === Test output files ===
+*.csv
+*.txt
+*.out
+
+# === Dependency caches ===
+.mvn/
+.gradle/
+node_modules/
+
+# === Custom user files ===
+*.bak
+*.old
+
+# === Optional: test artifacts ===
+mocked_output.csv
+test.csv
